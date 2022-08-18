@@ -4,6 +4,7 @@ import { Pressable, Text, View } from "react-native";
 import Container from "../../../commons/components/Container";
 import CustomButton from "../../../commons/components/forms/CustomButton";
 import CustomTextInput from "../../../commons/components/forms/CustomTextInput";
+import CustomTitle from "../../../commons/components/forms/CustomTitle";
 import { initialStateAuth } from "../../../commons/constants/Contants";
 import { IAuthData } from "../../../commons/types/CommonTypes";
 
@@ -13,12 +14,14 @@ export default function Login() {
 
   return (
     <Container>
+      <CustomTitle>Bienvenido</CustomTitle>
       <CustomTextInput
         label="Nombre de usuario*"
         onChangeText={(text: string) =>
           setAuthData({ ...authData, username: text })
         }
         value={authData.username}
+        placeholder="your-username"
       />
       <CustomTextInput
         label="Contraseña*"
@@ -27,6 +30,7 @@ export default function Login() {
         }
         value={authData.password}
         secureTextEntry
+        placeholder="**********"
       />
       <CustomButton onPress={null} title="Ingresar" />
     </Container>

@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   label: {
     textAlign: "center",
-    color: "#fff",
+    color: "#000",
     fontSize: 16,
   },
 });

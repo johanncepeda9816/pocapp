@@ -6,6 +6,7 @@ import {
   TextInputProps,
   Text,
 } from "react-native";
+import { SECONDARY } from "../../constants/Colors";
 import CustomError from "./CustomError";
 import CustomLabel from "./CustomLabel";
 
@@ -13,21 +14,24 @@ interface ICustomTextInput extends TextInputProps {
   label?: string;
   value?: string;
   onChangeText: any;
+  placeholder: string;
 }
 
 export default function CustomTextInput(props: ICustomTextInput) {
-  const { label, value, onChangeText } = props;
+  const { label, value, onChangeText, placeholder } = props;
   const [hasTouched, setHasTouched] = useState<boolean>(false);
 
   return (
     <View style={styles.container}>
       <CustomLabel>{label}</CustomLabel>
       <TextInput
+        placeholder={placeholder}
         onChangeText={onChangeText}
         value={value}
         style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
+        placeholderTextColor={"#ccc"}
         onEndEditing={() => setHasTouched(true)}
       />
       {value?.length === 0 && hasTouched && (
@@ -51,5 +55,7 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderWidth: 1,
     alignSelf: "center",
+    textAlign: "center",
+    color: SECONDARY,
   },
 });
