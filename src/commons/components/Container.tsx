@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 
 interface IContainer {
   children: ReactNode;
@@ -7,7 +7,13 @@ interface IContainer {
 
 export default function Container(props: IContainer) {
   const { children } = props;
-  return <SafeAreaView style={styles.container}>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.container}>
+        {children}
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({

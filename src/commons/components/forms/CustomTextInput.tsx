@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -12,21 +12,25 @@ import CustomLabel from "./CustomLabel";
 interface ICustomTextInput extends TextInputProps {
   label?: string;
   value?: string;
+  onChangeText: any;
 }
 
 export default function CustomTextInput(props: ICustomTextInput) {
-  const { label, value } = props;
+  const { label, value, onChangeText } = props;
+  const [hasTouched, setHasTouched] = useState<boolean>(false);
 
   return (
     <View style={styles.container}>
       <CustomLabel>{label}</CustomLabel>
       <TextInput
+        onChangeText={onChangeText}
         value={value}
         style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
+        onEndEditing={() => setHasTouched(true)}
       />
-      {value?.length === 0 && (
+      {value?.length === 0 && hasTouched && (
         <CustomError>Este campo es obligatorio</CustomError>
       )}
     </View>
@@ -36,10 +40,10 @@ export default function CustomTextInput(props: ICustomTextInput) {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    margin: 20,
+    margin: 10,
   },
   input: {
-    margin: 20,
+    margin: 10,
     marginBottom: 5,
     padding: 5,
     width: "80%",
