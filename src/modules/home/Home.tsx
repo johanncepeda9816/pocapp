@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
+import Container from "../../commons/components/Container";
 
 export default function Home() {
   return (
-    <View>
+    <Container>
       <Text>Home Screen</Text>
-    </View>
+    </Container>
   );
 }
