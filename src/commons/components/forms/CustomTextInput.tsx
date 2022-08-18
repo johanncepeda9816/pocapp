@@ -6,6 +6,7 @@ import {
   TextInputProps,
   Text,
 } from "react-native";
+import CustomError from "./CustomError";
 import CustomLabel from "./CustomLabel";
 
 interface ICustomTextInput extends TextInputProps {
@@ -25,7 +26,9 @@ export default function CustomTextInput(props: ICustomTextInput) {
         autoCapitalize="none"
         autoCorrect={false}
       />
-      {value?.length === 0 && <Text>Este campo es obligatorio</Text>}
+      {value?.length === 0 && (
+        <CustomError>Este campo es obligatorio</CustomError>
+      )}
     </View>
   );
 }
@@ -43,5 +46,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "#000",
     borderWidth: 1,
+    alignSelf: "center",
   },
 });

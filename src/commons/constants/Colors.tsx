@@ -1,3 +1,3 @@
-const ERROR = "#FFCCCC";
+const ERROR = "red";
 
 export { ERROR };
