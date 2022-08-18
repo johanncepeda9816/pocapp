@@ -1,5 +1,11 @@
 import { ReactNode } from "react";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import { PRIMARY } from "../constants/Colors";
 
 interface IContainer {
@@ -10,9 +16,14 @@ export default function Container(props: IContainer) {
   const { children } = props;
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.container}>
-        {children}
-      </ScrollView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
+        <ScrollView contentContainerStyle={styles.container}>
+          {children}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

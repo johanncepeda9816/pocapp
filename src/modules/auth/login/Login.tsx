@@ -16,7 +16,7 @@ export default function Login() {
     <Container>
       <CustomTitle>Bienvenido</CustomTitle>
       <CustomTextInput
-        label="Nombre de usuario*"
+        label="Nombre de usuario *"
         onChangeText={(text: string) =>
           setAuthData({ ...authData, username: text })
         }
@@ -24,12 +24,12 @@ export default function Login() {
         placeholder="your-username"
       />
       <CustomTextInput
-        label="Contraseña*"
+        label="Contraseña *"
         onChangeText={(text: string) =>
           setAuthData({ ...authData, password: text })
         }
         value={authData.password}
-        secureTextEntry
+        secureTextEntry={true}
         placeholder="**********"
       />
       <CustomButton onPress={null} title="Ingresar" />

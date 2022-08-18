@@ -13,20 +13,17 @@ import CustomLabel from "./CustomLabel";
 interface ICustomTextInput extends TextInputProps {
   label?: string;
   value?: string;
-  onChangeText: any;
-  placeholder: string;
 }
 
 export default function CustomTextInput(props: ICustomTextInput) {
-  const { label, value, onChangeText, placeholder } = props;
+  const { label, value } = { ...props };
   const [hasTouched, setHasTouched] = useState<boolean>(false);
 
   return (
     <View style={styles.container}>
       <CustomLabel>{label}</CustomLabel>
       <TextInput
-        placeholder={placeholder}
-        onChangeText={onChangeText}
+        {...props}
         value={value}
         style={styles.input}
         autoCapitalize="none"
