@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text } from "react-native";
+import { PRIMARY, SECONDARY } from "../../constants/Colors";
 
 interface ICustomButton {
   onPress: any;
@@ -15,6 +16,17 @@ export default function CustomButton(props: ICustomButton) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  label: {},
+  container: {
+    backgroundColor: SECONDARY,
+    width: "80%",
+    margin: 20,
+    borderRadius: 20,
+    padding: 10,
+    alignSelf: "center",
+  },
+  label: {
+    textAlign: "center",
+    color: "#fff",
+    fontSize: 16,
+  },
 });

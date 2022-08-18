@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import Container from "../../../commons/components/Container";
+import CustomButton from "../../../commons/components/forms/CustomButton";
 import CustomTextInput from "../../../commons/components/forms/CustomTextInput";
 import { initialStateAuth } from "../../../commons/constants/Contants";
 import { IAuthData } from "../../../commons/types/CommonTypes";
@@ -14,15 +15,20 @@ export default function Login() {
     <Container>
       <CustomTextInput
         label="Nombre de usuario*"
-        onChangeText={(text) => setAuthData({ ...authData, username: text })}
+        onChangeText={(text: string) =>
+          setAuthData({ ...authData, username: text })
+        }
         value={authData.username}
       />
       <CustomTextInput
         label="Contraseña*"
-        onChangeText={(text) => setAuthData({ ...authData, password: text })}
+        onChangeText={(text: string) =>
+          setAuthData({ ...authData, password: text })
+        }
         value={authData.password}
         secureTextEntry
       />
+      <CustomButton onPress={null} title="Ingresar" />
     </Container>
   );
 }

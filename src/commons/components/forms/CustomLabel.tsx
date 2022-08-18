@@ -13,7 +13,7 @@ export default function CustomLabel(props: ICustomLabel) {
 const styles = StyleSheet.create({
   label: {
     fontSize: 16,
-    fontWeight: "bold",
     textAlign: "center",
+    color: "#fff",
   },
 });

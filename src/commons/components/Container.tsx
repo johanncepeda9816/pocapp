@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { PRIMARY } from "../constants/Colors";
 
 interface IContainer {
   children: ReactNode;
@@ -19,7 +20,7 @@ export default function Container(props: IContainer) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: PRIMARY,
     alignItems: "center",
     justifyContent: "center",
     color: "#000",
