@@ -13,11 +13,15 @@ export default function Login() {
   return (
     <Container>
       <CustomTextInput
-        label="hola"
+        label="Nombre de usuario*"
         onChangeText={(text) => setAuthData({ ...authData, username: text })}
+        value={authData.username}
       />
       <CustomTextInput
+        label="Contraseña*"
         onChangeText={(text) => setAuthData({ ...authData, password: text })}
+        value={authData.password}
+        secureTextEntry
       />
     </Container>
   );

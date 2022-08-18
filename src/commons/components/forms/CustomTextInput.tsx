@@ -6,22 +6,42 @@ import {
   TextInputProps,
   Text,
 } from "react-native";
+import CustomLabel from "./CustomLabel";
 
 interface ICustomTextInput extends TextInputProps {
   label?: string;
+  value?: string;
 }
 
 export default function CustomTextInput(props: ICustomTextInput) {
-  const { label } = props;
+  const { label, value } = props;
+
   return (
     <View style={styles.container}>
-      <Text>{label}</Text>
-      <TextInput style={styles.input} />
+      <CustomLabel>{label}</CustomLabel>
+      <TextInput
+        value={value}
+        style={styles.input}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      {value?.length === 0 && <Text>Este campo es obligatorio</Text>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  input: {},
+  container: {
+    width: "100%",
+    margin: 20,
+  },
+  input: {
+    margin: 20,
+    marginBottom: 5,
+    padding: 5,
+    width: "80%",
+    borderRadius: 20,
+    borderColor: "#000",
+    borderWidth: 1,
+  },
 });
