@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { Auth_error, Internal_error } from "../../../commons/constants/Alerts";
+import useStorage from "../../../commons/hooks/useStorage";
 import { IAuthData } from "../../../commons/types/CommonTypes";
 
 export default function useAuth() {
@@ -10,7 +11,16 @@ export default function useAuth() {
     username: "",
   });
 
-  useEffect(() => {}, []);
+  const { getStorageData, storeData } = useStorage();
+
+  useEffect(() => {
+    let isMounted = false;
+    let user = getStorageData("userAuth");
+    if (user) setUserAuth(user);
+    return () => {
+      isMounted = true;
+    };
+  }, []);
 
   const loginWithUsernameAndPassword = (username: string, password: string) => {
     try {
@@ -21,7 +31,7 @@ export default function useAuth() {
           isAuth: true,
         };
         setUserAuth(userDto);
-        localStorage.setItem("user", JSON.stringify(userDto));
+        storeData("userAuth", userDto);
       } else {
         Auth_error();
       }
