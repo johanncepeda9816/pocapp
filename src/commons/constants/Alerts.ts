@@ -7,6 +7,13 @@ const Auth_error = () => {
   );
 };
 
+const Required_fields = () => {
+  return Alert.alert(
+    "Campos imcompletos",
+    "Completa todos los campos obligatorios"
+  );
+};
+
 const Internal_error = () => {
   return Alert.alert(
     "Error interno",
@@ -14,4 +21,4 @@ const Internal_error = () => {
   );
 };
 
-export { Auth_error, Internal_error };
+export { Auth_error, Internal_error, Required_fields };
