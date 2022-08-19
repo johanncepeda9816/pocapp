@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import Container from "../../../commons/components/Container";
 import CustomButton from "../../../commons/components/forms/CustomButton";
@@ -14,7 +14,11 @@ import useAuth from "../hooks/useAuth";
 export default function Login() {
   const navigation = useNavigation<any>();
   const [authData, setAuthData] = useState<IAuthData>(initialStateAuth);
-  const { loading, loginWithUsernameAndPassword } = useAuth();
+  const { loading, loginWithUsernameAndPassword, userAuth } = useAuth();
+
+  useEffect(() => {
+    if (userAuth && userAuth.isAuth) navigation.navigate("Home");
+  }, [userAuth]);
 
   const onLogin = () => {
     if (authData.username.trim() === "" || authData.password?.trim() === "") {

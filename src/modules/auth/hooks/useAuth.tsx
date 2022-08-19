@@ -1,5 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { Alert } from "react-native";
 import { Auth_error, Internal_error } from "../../../commons/constants/Alerts";
 import useStorage from "../../../commons/hooks/useStorage";
 import { IAuthData } from "../../../commons/types/CommonTypes";
@@ -10,17 +10,23 @@ export default function useAuth() {
     isAuth: false,
     username: "",
   });
+  const navigation = useNavigation<any>();
 
   const { getStorageData, storeData } = useStorage();
 
   useEffect(() => {
     let isMounted = false;
-    let user = getStorageData("userAuth");
-    if (user) setUserAuth(user);
+    init();
     return () => {
       isMounted = true;
     };
   }, []);
+
+  const init = async () => {
+    let user = await getStorageData("userAuth");
+    console.log("user", user);
+    if (user) setUserAuth(user);
+  };
 
   const loginWithUsernameAndPassword = (username: string, password: string) => {
     try {
@@ -32,6 +38,7 @@ export default function useAuth() {
         };
         setUserAuth(userDto);
         storeData("userAuth", userDto);
+        navigation.navigate("Home");
       } else {
         Auth_error();
       }
