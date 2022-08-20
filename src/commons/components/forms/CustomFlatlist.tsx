@@ -9,7 +9,7 @@ import { PRIMARY } from "../../constants/Colors";
 
 interface IFlatlist extends FlatListProps<any> {
   data: any[];
-  ListHeaderComponent: any;
+  ListHeaderComponent?: any;
   renderItem: any;
   onEndReached: any;
 }

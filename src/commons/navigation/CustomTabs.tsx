@@ -32,6 +32,7 @@ export default function CustomTabs() {
         name="Favs"
         component={Settings}
         options={{
+          unmountOnBlur: true,
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image

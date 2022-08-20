@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { Updated_FavList } from "../../../commons/constants/Alerts";
 import useStorage from "../../../commons/hooks/useStorage";
@@ -16,18 +16,20 @@ export default function useFavorites() {
     init();
   }, []);
 
-  const updateStorage = async (value: IBurger[]) => {
+  useEffect(() => {
     setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [favList]);
+
+  const updateStorage = async (value: IBurger[]) => {
     await storeData(STORAGE_KEY, value);
-    setLoading(false);
   };
 
   const init = async () => {
-    console.log("Initialiting...");
-    setLoading(true);
     let favList = await getStorageData(STORAGE_KEY);
     if (favList) setFavList(favList);
-    setLoading(false);
   };
 
   const addFavorite = async (burguer: IBurger) => {
@@ -45,6 +47,7 @@ export default function useFavorites() {
     await updateStorage(updatedList);
     setFavList(updatedList);
     Updated_FavList();
+    navigation.navigate("Home");
   };
 
   const isAlreadyFav = (newBurguer: IBurger): boolean => {
@@ -62,6 +65,7 @@ export default function useFavorites() {
     addFavorite,
     removeFavorite,
     isAlreadyFav,
+    init,
     favList,
     loading,
   };
