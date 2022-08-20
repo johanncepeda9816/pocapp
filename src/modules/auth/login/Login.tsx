@@ -33,7 +33,7 @@ export default function Login() {
       <Container>
         <CustomTitle>Bienvenido</CustomTitle>
         <CustomTextInput
-          label="Nombre de usuario *"
+          label="Username *"
           onChangeText={(text: string) =>
             setAuthData({ ...authData, username: text })
           }
@@ -41,7 +41,7 @@ export default function Login() {
           placeholder="your-username"
         />
         <CustomTextInput
-          label="Contraseña *"
+          label="Password *"
           onChangeText={(text: string) =>
             setAuthData({ ...authData, password: text })
           }
@@ -49,7 +49,7 @@ export default function Login() {
           secureTextEntry={true}
           placeholder="**********"
         />
-        <CustomButton onPress={onLogin} title="Ingresar" />
+        <CustomButton onPress={onLogin} title="Login" />
       </Container>
     );
   } else {

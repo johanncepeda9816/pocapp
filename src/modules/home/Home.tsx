@@ -1,9 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+  SafeAreaView,
+} from "react-native";
 import Container from "../../commons/components/Container";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
-import { SECONDARY } from "../../commons/constants/Colors";
+import { PRIMARY, SECONDARY } from "../../commons/constants/Colors";
 import BurguerItem from "./components/BurguerItem";
 import useHomeServices from "./hooks/useHomeServices";
 import { IBurger } from "./types/IBurger";
@@ -32,17 +39,17 @@ export default function Home() {
 
   if (!loading) {
     return (
-      <Container>
+      <SafeAreaView style={{ flex: 1 }}>
         <FlatList
-          style={{ width: "100%" }}
+          style={styles.container}
           data={getBurgers(20)}
           renderItem={renderBurger}
           keyExtractor={(item) => item.id}
           onEndReached={() => handleLimit()}
           ListHeaderComponent={<CustomTitle>Burguer Mall</CustomTitle>}
-          nestedScrollEnabled={false}
+          nestedScrollEnabled={true}
         />
-      </Container>
+      </SafeAreaView>
     );
   } else {
     return (
@@ -52,3 +59,12 @@ export default function Home() {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: PRIMARY,
+    color: "#000",
+    width: "100%",
+  },
+});

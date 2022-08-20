@@ -36,7 +36,7 @@ export default function Details() {
           <Image style={styles.icon} source={burguerIcon} />
           <Text style={styles.title}>{burguer.name}</Text>
           <Text style={styles.description}>{burguer.description}</Text>
-          <Text style={styles.subtitle}>Ingredientes:</Text>
+          <Text style={styles.subtitle}>Ingredients:</Text>
           <View style={styles.ingredientContainer}>
             <Text style={styles.ingredient}>{ingredientList}</Text>
           </View>
@@ -47,7 +47,7 @@ export default function Details() {
               title={"Añadir a favoritos"}
             />
             <CustomButton
-              color={SECONDARY}
+              color={"#fff"}
               onPress={() => navigation.goBack()}
               title={"Regresar"}
             />
@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
     backgroundColor: SECONDARY,
     borderRadius: 20,
     padding: 10,
+    width: "90%",
+    marginBottom: 50,
   },
   icon: {
     width: 50,
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
   },
   description: {
     margin: 20,
+    textAlign: "justify",
   },
   ingredientContainer: {
     flexDirection: "column",
