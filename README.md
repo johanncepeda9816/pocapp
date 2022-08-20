@@ -28,7 +28,7 @@ git clone https://github.com/johanncepeda9816/pocapp.git
 cd pocapp
 ```
 
-3. Compilamos nuestro proyecto para generar el target
+3. Compilamos nuestro proyecto para generar la carpeta node_modules
 
 ```
 npm install
@@ -46,7 +46,13 @@ code .
 expo start
 ```
 
-6. y escaneamos el codigo QR con el celular, si es IOS con la camara, si es Android usar una app
+6. y escaneamos el codigo QR con el celular, si es IOS con la camara, si es Android usar una app. Usamos las
+   credenciales de acceso para entrar en la aplicación
+
+```
+username: admin
+password: admin
+```
 
 ## Imagenes
 
