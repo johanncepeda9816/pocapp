@@ -26,10 +26,11 @@ export default function useHomeServices() {
       .finally(() => setLoading(false));
   };
 
-  const getBurgers = (limit: number) => {
+  const getBurgers = (limit: number): IBurger[] => {
     if (burgers?.length) {
       return burgers.slice(0, limit);
     }
+    return [];
   };
 
   return { loading, getBurgers };

@@ -17,7 +17,7 @@ export default function Login() {
   const { loading, loginWithUsernameAndPassword, userAuth } = useAuth();
 
   useEffect(() => {
-    if (userAuth && userAuth.isAuth) navigation.navigate("Home");
+    if (userAuth && userAuth.isAuth) navigation.navigate("Tabs");
   }, [userAuth]);
 
   const onLogin = () => {

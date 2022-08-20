@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../../modules/home/Home";
-import Settings from "../../modules/settings/Favorites";
+import Settings from "../../modules/favorites/Favorites";
 import { PRIMARY, SECONDARY } from "../constants/Colors";
 import { Image } from "react-native";
 import { home, lupa } from "../../../assets/icons";

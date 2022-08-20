@@ -9,6 +9,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import Container from "../../commons/components/Container";
+import CustomFlatlist from "../../commons/components/forms/CustomFlatlist";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
 import { PRIMARY, SECONDARY } from "../../commons/constants/Colors";
 import BurguerItem from "./components/BurguerItem";
@@ -39,17 +40,12 @@ export default function Home() {
 
   if (!loading) {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <FlatList
-          style={styles.container}
-          data={getBurgers(20)}
-          renderItem={renderBurger}
-          keyExtractor={(item) => item.id}
-          onEndReached={() => handleLimit()}
-          ListHeaderComponent={<CustomTitle>Burguer Mall</CustomTitle>}
-          nestedScrollEnabled={true}
-        />
-      </SafeAreaView>
+      <CustomFlatlist
+        data={getBurgers(20)}
+        renderItem={renderBurger}
+        onEndReached={() => handleLimit()}
+        ListHeaderComponent={<CustomTitle>Burguer Mall</CustomTitle>}
+      />
     );
   } else {
     return (
@@ -59,12 +55,3 @@ export default function Home() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: PRIMARY,
-    color: "#000",
-    width: "100%",
-  },
-});
