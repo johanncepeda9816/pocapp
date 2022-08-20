@@ -38,7 +38,7 @@ export default function useAuth() {
         };
         setUserAuth(userDto);
         storeData("userAuth", userDto);
-        navigation.navigate("Tabs");
+        navigation.replace("Tabs");
       } else {
         Auth_error();
       }
