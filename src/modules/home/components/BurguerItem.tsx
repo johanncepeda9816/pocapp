@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { burguerIcon } from "../../../../assets/icons";
 import CustomLabel from "../../../commons/components/forms/CustomLabel";
 import { SECONDARY } from "../../../commons/constants/Colors";
@@ -6,12 +6,13 @@ import { IBurger } from "../types/IBurger";
 
 interface IBurgerItem {
   burguer: IBurger;
+  onPress: any;
 }
 
 export default function BurguerItem(props: IBurgerItem) {
-  const { burguer } = props;
+  const { burguer, onPress } = props;
   return (
-    <View style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.infoContainer}>
         <Image style={styles.icon} source={burguerIcon} />
         <View style={{ width: "80%" }}>
@@ -19,7 +20,7 @@ export default function BurguerItem(props: IBurgerItem) {
           <Text>{burguer.description}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

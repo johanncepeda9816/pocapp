@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import Container from "../../commons/components/Container";
@@ -10,10 +11,23 @@ import { IBurger } from "./types/IBurger";
 export default function Home() {
   const { loading, getBurgers } = useHomeServices();
   const [limit, setLimit] = useState<number>(20);
+  const navigation = useNavigation<any>();
 
   const handleLimit = () => {
     getBurgers(limit + 20);
     setLimit(limit + 20);
+  };
+
+  const viewDetails = (burguer: IBurger) => {
+    navigation.navigate("Details", { burguer: burguer });
+  };
+
+  const renderBurger = ({ item }: any) => {
+    const burguer: IBurger = item;
+
+    return (
+      <BurguerItem onPress={() => viewDetails(burguer)} burguer={burguer} />
+    );
   };
 
   if (!loading) {
@@ -38,8 +52,3 @@ export default function Home() {
     );
   }
 }
-
-const renderBurger = ({ item }: any) => {
-  const burguer: IBurger = item;
-  return <BurguerItem burguer={burguer} />;
-};
