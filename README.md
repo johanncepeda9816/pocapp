@@ -50,21 +50,16 @@ expo start
 
 ## Imagenes
 
-Home
 ![ec2Running](./assets/resources/Home.jpeg)
 
-Favorites
 ![ProofServicesAtan](./assets/resources/Favorites.jpeg)
 
-Detalles del producto
 ![ProofServicesExp](./assets/resources/Detalles.jpeg)
-
-Detalles desde favoritos
-![ProofServicesExp](./assets/resources/DetallesFav.jpeg)
 
 ## Programa hecho con
 
-- [React Native](https://maven.apache.org/) - Dependency Management
+- [React Native](https://reactnative.dev/docs/getting-started)
+- [Expo](https://docs.expo.dev/)
 
 ## Actor
 
