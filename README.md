@@ -58,6 +58,10 @@ password: admin
 
 ![](./assets/resources/Video.gif)
 
+![](./assets/resources/Home.jpeg)
+![](./assets/resources/Favorites.jpeg)
+![](./assets/resources/Detalles.jpeg)
+
 ## Programa hecho con
 
 - [React Native](https://reactnative.dev/docs/getting-started)
