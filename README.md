@@ -56,7 +56,7 @@ password: admin
 
 ## Contenido
 
-![Uploading RPReplay_Final1661013544_MP4_AdobeExpress.gif…]()
+![](./assets/resources/Video.gif)
 
 ## Programa hecho con
 
