@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../../modules/home/Home";
-import Settings from "../../modules/settings/Settings";
+import Settings from "../../modules/settings/Favorites";
 import { PRIMARY, SECONDARY } from "../constants/Colors";
 import { Image } from "react-native";
 import { home, lupa } from "../../../assets/icons";
@@ -29,7 +29,7 @@ export default function CustomTabs() {
         }}
       />
       <Tab.Screen
-        name="Detalles"
+        name="Favs"
         component={Settings}
         options={{
           headerShown: false,
