@@ -54,13 +54,9 @@ username: admin
 password: admin
 ```
 
-## Imagenes
+## Contenido
 
-![ec2Running](./assets/resources/Home.jpeg)
-
-![ProofServicesAtan](./assets/resources/Favorites.jpeg)
-
-![ProofServicesExp](./assets/resources/Detalles.jpeg)
+![Uploading RPReplay_Final1661013544_MP4_AdobeExpress.gif…]()
 
 ## Programa hecho con
 
