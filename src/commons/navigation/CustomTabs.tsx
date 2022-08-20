@@ -11,7 +11,7 @@ export default function CustomTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Inicio"
+        name="Home"
         component={Home}
         options={{
           headerShown: false,
