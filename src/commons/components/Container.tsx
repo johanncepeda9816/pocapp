@@ -18,7 +18,7 @@ export default function Container(props: IContainer) {
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.container}
+        style={{ flex: 1 }}
       >
         <ScrollView contentContainerStyle={styles.container}>
           {children}
@@ -35,5 +35,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     color: "#000",
+    width: "100%",
   },
 });

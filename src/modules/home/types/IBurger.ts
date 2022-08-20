@@ -1,5 +1,5 @@
 export interface IBurger {
-  id?: string;
+  id: string;
   name: string;
   description: string;
   ingredients: string[];
