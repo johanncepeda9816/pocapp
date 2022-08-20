@@ -8,12 +8,15 @@ import CustomLabel from "../../commons/components/forms/CustomLabel";
 import { burguerIcon } from "../../../assets/icons";
 import CustomButton from "../../commons/components/forms/CustomButton";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
+import useFavorites from "../favorites/hooks/useFavorites";
 
 export default function Details() {
   const route = useRoute<any>();
   const [burguer, setBurguer] = useState<IBurger>();
+  const [isFromFavList, setIsFromFavList] = useState<boolean>(false);
   const [ingredientList, setIngredientList] = useState<string>("");
   const navigation = useNavigation<any>();
+  const { addFavorite, isAlreadyFav, removeFavorite } = useFavorites();
 
   useEffect(() => {
     if (route.params?.burguer) {
@@ -25,6 +28,8 @@ export default function Details() {
           ingredient + (i + 1 === burguer.ingredients.length ? "." : ", ");
       });
       setIngredientList(ingredients);
+
+      if (route.params.isFromFavList === true) setIsFromFavList(true);
     }
   }, []);
 
@@ -41,11 +46,20 @@ export default function Details() {
             <Text style={styles.ingredient}>{ingredientList}</Text>
           </View>
           <View>
-            <CustomButton
-              color={PRIMARY}
-              onPress={undefined}
-              title={"Añadir a favoritos"}
-            />
+            {!isAlreadyFav(burguer) && (
+              <CustomButton
+                color={PRIMARY}
+                onPress={() => addFavorite(burguer)}
+                title={"Añadir a favoritos"}
+              />
+            )}
+            {isFromFavList && (
+              <CustomButton
+                color={PRIMARY}
+                onPress={() => removeFavorite(burguer)}
+                title={"Eliminar"}
+              />
+            )}
             <CustomButton
               color={"#fff"}
               onPress={() => navigation.goBack()}

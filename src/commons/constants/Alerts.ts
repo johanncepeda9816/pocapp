@@ -21,4 +21,12 @@ const Internal_error = () => {
   );
 };
 
-export { Auth_error, Internal_error, Required_fields };
+const Updated_FavList = () => {
+  return Alert.alert(
+    "List actualizada",
+    "Se ha actualizado tu lista de favoritos",
+    [{ text: "Entendido", onPress: () => console.log("OK Pressed") }]
+  );
+};
+
+export { Auth_error, Internal_error, Required_fields, Updated_FavList };

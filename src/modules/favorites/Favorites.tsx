@@ -1,29 +1,48 @@
-import React from "react";
-import { FlatList, SafeAreaView, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useLayoutEffect } from "react";
+import { ActivityIndicator, FlatList, SafeAreaView, View } from "react-native";
 import Container from "../../commons/components/Container";
 import CustomFlatlist from "../../commons/components/forms/CustomFlatlist";
+import CustomLabel from "../../commons/components/forms/CustomLabel";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
+import { SECONDARY } from "../../commons/constants/Colors";
 import BurguerItem from "../home/components/BurguerItem";
 import { IBurger } from "../home/types/IBurger";
 import useFavorites from "./hooks/useFavorites";
 
 export default function Favorites() {
-  const { addFavorite, removeFavorite, favList } = useFavorites();
+  const { loading, favList } = useFavorites();
+  const navigation = useNavigation<any>();
+
+  const viewDetails = (burguer: IBurger) => {
+    navigation.navigate("Details", { burguer: burguer, isFromFavList: true });
+  };
 
   const renderBurger = ({ item }: any) => {
     const burguer: IBurger = item;
 
-    return <BurguerItem onPress={null} burguer={burguer} />;
+    return (
+      <BurguerItem onPress={() => viewDetails(burguer)} burguer={burguer} />
+    );
   };
 
-  return (
-    <CustomFlatlist
-      data={favList}
-      renderItem={renderBurger}
-      keyExtractor={(item) => item.id}
-      onEndReached={null}
-      ListHeaderComponent={<CustomTitle>Favorites</CustomTitle>}
-      nestedScrollEnabled={true}
-    />
-  );
+  if (!loading) {
+    return (
+      <CustomFlatlist
+        data={favList}
+        renderItem={renderBurger}
+        keyExtractor={(item) => item.id}
+        ListEmptyComponent={<CustomLabel>No tienes favoritos</CustomLabel>}
+        onEndReached={null}
+        ListHeaderComponent={<CustomTitle>Favorites</CustomTitle>}
+        nestedScrollEnabled={true}
+      />
+    );
+  } else {
+    return (
+      <Container>
+        <ActivityIndicator color={SECONDARY} />
+      </Container>
+    );
+  }
 }

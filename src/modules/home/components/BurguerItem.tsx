@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
 import { burguerIcon } from "../../../../assets/icons";
-import CustomLabel from "../../../commons/components/forms/CustomLabel";
 import { SECONDARY } from "../../../commons/constants/Colors";
 import { IBurger } from "../types/IBurger";
 
@@ -11,6 +10,7 @@ interface IBurgerItem {
 
 export default function BurguerItem(props: IBurgerItem) {
   const { burguer, onPress } = props;
+
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.infoContainer}>
