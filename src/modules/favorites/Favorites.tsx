@@ -12,7 +12,7 @@ import CustomFlatlist from "../../commons/components/forms/CustomFlatlist";
 import CustomLabel from "../../commons/components/forms/CustomLabel";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
 import { SECONDARY } from "../../commons/constants/Colors";
-import BurguerItem from "../home/components/BurguerItem";
+import BurgerItem from "../home/components/BurguerItem";
 import { IBurger } from "../home/types/IBurger";
 import useFavorites from "./hooks/useFavorites";
 
@@ -20,16 +20,14 @@ export default function Favorites() {
   const { loading, favList, init } = useFavorites();
   const navigation = useNavigation<any>();
 
-  const viewDetails = (burguer: IBurger) => {
-    navigation.navigate("Details", { burguer: burguer, isFromFavList: true });
+  const viewDetails = (burger: IBurger) => {
+    navigation.navigate("Details", { burger: burger, isFromFavList: true });
   };
 
   const renderBurger = ({ item }: any) => {
-    const burguer: IBurger = item;
+    const burger: IBurger = item;
 
-    return (
-      <BurguerItem onPress={() => viewDetails(burguer)} burguer={burguer} />
-    );
+    return <BurgerItem onPress={() => viewDetails(burger)} burger={burger} />;
   };
 
   if (!loading) {

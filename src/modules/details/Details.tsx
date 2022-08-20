@@ -5,27 +5,27 @@ import { ActivityIndicator, StyleSheet, Text, View, Image } from "react-native";
 import Container from "../../commons/components/Container";
 import { PRIMARY, SECONDARY } from "../../commons/constants/Colors";
 import CustomLabel from "../../commons/components/forms/CustomLabel";
-import { burguerIcon } from "../../../assets/icons";
+import { burgerIcon } from "../../../assets/icons";
 import CustomButton from "../../commons/components/forms/CustomButton";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
 import useFavorites from "../favorites/hooks/useFavorites";
 
 export default function Details() {
   const route = useRoute<any>();
-  const [burguer, setBurguer] = useState<IBurger>();
+  const [burger, setburger] = useState<IBurger>();
   const [isFromFavList, setIsFromFavList] = useState<boolean>(false);
   const [ingredientList, setIngredientList] = useState<string>("");
   const navigation = useNavigation<any>();
   const { addFavorite, isAlreadyFav, removeFavorite } = useFavorites();
 
   useEffect(() => {
-    if (route.params?.burguer) {
-      let burguer: IBurger = route.params.burguer;
-      setBurguer(burguer);
+    if (route.params?.burger) {
+      let burger: IBurger = route.params.burger;
+      setburger(burger);
       let ingredients = "";
-      burguer.ingredients.forEach((ingredient, i) => {
+      burger.ingredients.forEach((ingredient, i) => {
         ingredients +=
-          ingredient + (i + 1 === burguer.ingredients.length ? "." : ", ");
+          ingredient + (i + 1 === burger.ingredients.length ? "." : ", ");
       });
       setIngredientList(ingredients);
 
@@ -33,30 +33,30 @@ export default function Details() {
     }
   }, []);
 
-  if (burguer) {
+  if (burger) {
     return (
       <Container>
         <CustomTitle>Detalles</CustomTitle>
         <View style={styles.container}>
-          <Image style={styles.icon} source={burguerIcon} />
-          <Text style={styles.title}>{burguer.name}</Text>
-          <Text style={styles.description}>{burguer.description}</Text>
+          <Image style={styles.icon} source={burgerIcon} />
+          <Text style={styles.title}>{burger.name}</Text>
+          <Text style={styles.description}>{burger.description}</Text>
           <Text style={styles.subtitle}>Ingredients:</Text>
           <View style={styles.ingredientContainer}>
             <Text style={styles.ingredient}>{ingredientList}</Text>
           </View>
           <View>
-            {!isAlreadyFav(burguer) && (
+            {!isAlreadyFav(burger) && (
               <CustomButton
                 color={PRIMARY}
-                onPress={() => addFavorite(burguer)}
+                onPress={() => addFavorite(burger)}
                 title={"Añadir a favoritos"}
               />
             )}
             {isFromFavList && (
               <CustomButton
                 color={PRIMARY}
-                onPress={() => removeFavorite(burguer)}
+                onPress={() => removeFavorite(burger)}
                 title={"Eliminar"}
               />
             )}

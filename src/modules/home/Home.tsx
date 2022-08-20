@@ -13,7 +13,7 @@ import CustomFlatlist from "../../commons/components/forms/CustomFlatlist";
 import CustomTextInput from "../../commons/components/forms/CustomTextInput";
 import CustomTitle from "../../commons/components/forms/CustomTitle";
 import { PRIMARY, SECONDARY } from "../../commons/constants/Colors";
-import BurguerItem from "./components/BurguerItem";
+import BurgerItem from "./components/BurguerItem";
 import useHomeServices from "./hooks/useHomeServices";
 import { IBurger } from "./types/IBurger";
 
@@ -21,30 +21,30 @@ export default function Home() {
   const { loading, getBurgers, burgers } = useHomeServices();
   const [limit, setLimit] = useState<number>(20);
   const navigation = useNavigation<any>();
-  const [burguerList, setBurguerList] = useState<IBurger[]>([]);
+  const [burgerList, setburgerList] = useState<IBurger[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
 
   useEffect(() => {
-    setBurguerList(getBurgers(20));
-    burgers.forEach((burguer) => {
-      console.log(burguer.name);
+    setburgerList(getBurgers(20));
+    burgers.forEach((burger) => {
+      console.log(burger.name);
     });
   }, [burgers]);
 
   useEffect(() => {
-    let burguers = [...burgers];
+    let burgersCopy = [...burgers];
     if (searchValue.length > 0) {
-      let filtered = burguers.filter((burguer) => {
-        return burguer.name.toLowerCase().includes(searchValue.toLowerCase());
+      let filtered = burgersCopy.filter((burger) => {
+        return burger.name.toLowerCase().includes(searchValue.toLowerCase());
       });
-      setBurguerList(filtered);
+      setburgerList(filtered);
     } else {
-      setBurguerList(getBurgers(limit));
+      setburgerList(getBurgers(limit));
     }
   }, [searchValue]);
 
   const handleLimit = () => {
-    setBurguerList(getBurgers(limit + 20));
+    setburgerList(getBurgers(limit + 20));
     setLimit(limit + 20);
   };
 
@@ -52,27 +52,25 @@ export default function Home() {
     setSearchValue(value);
   };
 
-  const viewDetails = (burguer: IBurger) => {
-    navigation.navigate("Details", { burguer: burguer });
+  const viewDetails = (burger: IBurger) => {
+    navigation.navigate("Details", { burger: burger });
   };
 
   const renderBurger = ({ item }: any) => {
-    const burguer: IBurger = item;
+    const burger: IBurger = item;
 
-    return (
-      <BurguerItem onPress={() => viewDetails(burguer)} burguer={burguer} />
-    );
+    return <BurgerItem onPress={() => viewDetails(burger)} burger={burger} />;
   };
 
   if (!loading) {
     return (
       <CustomFlatlist
-        data={burguerList}
+        data={burgerList}
         renderItem={renderBurger}
         onEndReached={() => handleLimit()}
         ListHeaderComponent={
           <View>
-            <CustomTitle>Burguer Mall</CustomTitle>
+            <CustomTitle>Burger Mall</CustomTitle>
             <CustomTextInput
               placeholder="Search..."
               value={searchValue}

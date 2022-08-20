@@ -32,17 +32,17 @@ export default function useFavorites() {
     if (favList) setFavList(favList);
   };
 
-  const addFavorite = async (burguer: IBurger) => {
-    if (!isAlreadyFav(burguer)) {
-      let copyList = [...favList, burguer];
+  const addFavorite = async (burger: IBurger) => {
+    if (!isAlreadyFav(burger)) {
+      let copyList = [...favList, burger];
       await updateStorage(copyList);
       setFavList(copyList);
     }
   };
 
-  const removeFavorite = async (burguerToDelete: IBurger) => {
+  const removeFavorite = async (burgerToDelete: IBurger) => {
     let updatedList = favList.filter(
-      (burguer) => burguer.id !== burguerToDelete.id
+      (burger) => burger.id !== burgerToDelete.id
     );
     await updateStorage(updatedList);
     setFavList(updatedList);
@@ -50,10 +50,10 @@ export default function useFavorites() {
     navigation.navigate("Home");
   };
 
-  const isAlreadyFav = (newBurguer: IBurger): boolean => {
+  const isAlreadyFav = (newburger: IBurger): boolean => {
     let res = false;
-    favList.map((burguer) => {
-      if (burguer.id === newBurguer.id) {
+    favList.map((burger) => {
+      if (burger.id === newburger.id) {
         res = true;
       }
     });

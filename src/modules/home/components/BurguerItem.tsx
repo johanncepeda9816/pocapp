@@ -1,23 +1,23 @@
 import { StyleSheet, View, Text, Image, Pressable } from "react-native";
-import { burguerIcon } from "../../../../assets/icons";
+import { burgerIcon } from "../../../../assets/icons";
 import { SECONDARY } from "../../../commons/constants/Colors";
 import { IBurger } from "../types/IBurger";
 
 interface IBurgerItem {
-  burguer: IBurger;
+  burger: IBurger;
   onPress: any;
 }
 
-export default function BurguerItem(props: IBurgerItem) {
-  const { burguer, onPress } = props;
+export default function BurgerItem(props: IBurgerItem) {
+  const { burger, onPress } = props;
 
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.infoContainer}>
-        <Image style={styles.icon} source={burguerIcon} />
+        <Image style={styles.icon} source={burgerIcon} />
         <View style={{ width: "80%" }}>
-          <Text style={styles.title}>{burguer.name}</Text>
-          <Text>{burguer.description}</Text>
+          <Text style={styles.title}>{burger.name}</Text>
+          <Text>{burger.description}</Text>
         </View>
       </View>
     </Pressable>
