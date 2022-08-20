@@ -3,7 +3,7 @@ import { IBurger } from "../types/IBurger";
 
 export default function useHomeServices() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [burgers, setBurgers] = useState<IBurger[]>();
+  const [burgers, setBurgers] = useState<IBurger[]>([]);
 
   useEffect(() => {
     getBurgerList();
@@ -33,5 +33,5 @@ export default function useHomeServices() {
     return [];
   };
 
-  return { loading, getBurgers };
+  return { loading, getBurgers, burgers };
 }
